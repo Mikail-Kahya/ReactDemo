@@ -1,7 +1,7 @@
 # React Task Manager
 My first React + TypeScript project, built to practice modern frontend fundamentals and component-based design. Demonstrates task creation, state management, and clean TypeScript usage.
 
-**[Live Demo]()** | **[GitHub Repo](https://github.com/Mikail-Kahya/react-task-manger)**
+**[Live Demo](https://mk-react.netlify.app)** | **[GitHub Repo](https://github.com/Mikail-Kahya/react-task-manager)**
 
 ## Tech stack
 - Language: Typescript
