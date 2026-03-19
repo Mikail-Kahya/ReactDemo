@@ -1,18 +1,35 @@
-# React Task application (learning fundamentals)
+# React Task Manager
+My first React + TypeScript project, built to practice modern frontend fundamentals and component-based design. Demonstrates task creation, state management, and clean TypeScript usage.
 
-This project is to showcase my skills as a developer learning a new framework like react with the skills I have learnt over the years. Down below you can find statistics on how I did as well as important information on the project.
+**[Live Demo]()** | **[GitHub Repo](https://github.com/Mikail-Kahya/react-task-manger)**
 
 ## Tech stack
-Language: Typescript\
-Framework: React\
-Development server: Vite\
-Host provider: Netlify\
+- Language: Typescript
+- Framework: React
+- Build tool: Vite
+- Hosting: Netlify
+- Git client: Fork
 
 ## Time invested
-Setup: 40 minutes 23 seconds
+- Setup: 40 minutes 23 seconds
+- Development:  2 hours 53 minutes 58 seconds
+
+## Learning Resources
+- Tutorial reference: https://www.youtube.com/watch?v=Rh3tobg7hEo&t=462s
+- React compiler documentation: https://react.dev/learn/react-compiler
 
 ## Learnings
 
-This started from the template that node gives when starting a new project in React with a typescript compiler. First I dimmed it down to allow a better start. That does mean some elements such as the bundler and eslint for styling go less explored.
+### The setup
+I started from the default React + TypeScript Vite template and simplified the initial structure to focus on core functionality. This helped me understand the app’s entry point, component hierarchy, and build setup.
+
+### TypeScript combined with React
+This project helped me translate my existing programming habits into React’s component-based model. I focused on props, state, and reusable components, while using TypeScript to improve type safety and clarity.
+
+### Debugging
+Debugging in React required me to rely more heavily on browser dev tools, console output, and careful component isolation. I also became more aware of how linting and build tooling help catch issues earlier.
 
 ## Future work
+- Add more advanced task features such as filtering, persistence, or task categories.
+- Build a larger TypeScript + React project with a more professional structure.
+- Create a project I can actually use for my Dungeons & Dragons campaigns.
