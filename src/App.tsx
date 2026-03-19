@@ -1,5 +1,6 @@
-import { useState, type ChangeEvent } from 'react'
+import { useState } from 'react'
 import { NewTodoForm } from './NewTodoForm.tsx'
+import { TodoList } from './TodoList.tsx'
 import type { Task } from './Types.tsx'
 import './reset.css'
 import './style.css'
@@ -42,23 +43,6 @@ export default function App() {
   return <>
     <NewTodoForm onSubmit={addTodo}/>
     <h1 className="header">Todo List</h1>
-    <ul className='list'>
-      { todos.length === 0 && "No Todos" }
-      { todos.map(todo => {
-        return (
-          <li key={todo.id}>
-            <label>
-              <input  type="checkbox" 
-                      checked={todo.isCompleted}
-                      onChange={(e : ChangeEvent<HTMLInputElement>)=> toggleTodo(todo.id, e.target.checked)}/>
-              {todo.name}
-            </label>
-            <button className="btn btn-danger"
-                    onClick={() => deleteTodo(todo.id)}>Delete</button>
-          </li>
-        );
-      }) }
-      
-    </ul>
+    <TodoList list={todos}/>
   </> 
 }
