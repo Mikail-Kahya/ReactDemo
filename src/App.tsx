@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { NewTodoForm } from './NewTodoForm.tsx'
 import { TodoList } from './TodoList.tsx'
-import type { Task } from './Types.tsx'
+import type { Task, TodoInteractions } from './Types.tsx'
 import './reset.css'
 import './style.css'
 
@@ -40,9 +40,13 @@ export default function App() {
     });
   }
 
+  const availableInteractions : TodoInteractions = {
+    toggle : toggleTodo,
+    delete : deleteTodo
+  }
   return <>
     <NewTodoForm onSubmit={addTodo}/>
     <h1 className="header">Todo List</h1>
-    <TodoList list={todos}/>
+    <TodoList list={todos} todoInteractions={availableInteractions}/>
   </> 
 }

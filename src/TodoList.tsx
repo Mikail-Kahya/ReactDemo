@@ -1,16 +1,21 @@
-import { type ChangeEvent } from 'react'
 import { TodoItem } from './TodoItem.tsx';
-import { type Task } from './Types.tsx'
+import { type Task, type TodoInteractions } from './Types.tsx'
 
 interface TodosProps {
-    list : Task[]
+    list : Task[],
+    todoInteractions : TodoInteractions
 }
 
-export function TodoList({list} : TodosProps) {
+export function TodoList({list, todoInteractions} : TodosProps) {
     return (
         <ul className='list'>
             { list.length === 0 && "No Todos" }
-            { list.map(todo => { return <TodoItem completed={todo.isCompleted} name={todo.name} id={todo.id}/> }) }
+            { list.map(todo => { 
+                return <TodoItem 
+                            {...todo} 
+                            keyValue={todo.id}
+                            todoInteractions={todoInteractions}/>; 
+                }) }
         </ul>
     );
 }

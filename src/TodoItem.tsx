@@ -1,23 +1,27 @@
+import { type ChangeEvent } from 'react'
+import type { TodoInteractions } from './Types';
 
 interface TodoItemProps {
-    completed : boolean,
     id : string,
-    name : string
+    name : string,
+    isCompleted : boolean,
+    keyValue : string,
+    todoInteractions : TodoInteractions
 }
 
-export function TodoItem({ completed, id, name } : TodoItemProps) {
+export function TodoItem({ id, name, isCompleted, keyValue, todoInteractions } : TodoItemProps) {
     return (
-        <li key={id}>
+        <li key={keyValue}>
           <label>
             <input  type="checkbox" 
-                    checked={completed}
-                    //onChange={(e : ChangeEvent<HTMLInputElement>)=> toggleTodo(id, e.target.checked)}
+                    checked={isCompleted}
+                    onChange={(e : ChangeEvent<HTMLInputElement>)=> todoInteractions.toggle(id, e.target.checked)}
                     />
             {name}
           </label>
           <button className="btn btn-danger"
-                  //onClick={() => deleteTodo(id)}
+                  onClick={() => todoInteractions.delete(id)}
                   >Delete</button>
         </li>
-    )
+    );
 }
