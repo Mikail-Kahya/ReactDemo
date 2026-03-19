@@ -1,23 +1,19 @@
 import { useState, type ChangeEvent } from 'react'
+import { NewTodoForm } from './NewTodoForm.tsx'
+import type { Task } from './Types.tsx'
 import './reset.css'
 import './style.css'
 
-type Task = { id : string, 
-  name : string, 
-  isCompleted: boolean,
-  createdTime : Date
-}
+
 
 export default function App() {
   const [newItem, setNewItem] = useState("");
   const [todos, setTodos] = useState<Task[]>([])
 
-  function handleSubmit(e : React.SubmitEvent<HTMLFormElement>) {
-    e.preventDefault();
-
+  function addTodo(title : string) {
     const newTask : Task = { 
       id: crypto.randomUUID(), 
-      name: newItem, 
+      name: title, 
       isCompleted: false, 
       createdTime: new Date()
     }
@@ -25,8 +21,6 @@ export default function App() {
     setTodos(currentTodos => {
         return [...currentTodos, newTask];
     });
-
-    setNewItem("");
   }
 
   function toggleTodo(id : string, isCompleted : boolean) {
@@ -47,13 +41,7 @@ export default function App() {
   }
 
   return <>
-    <form onSubmit={handleSubmit} className="new-item-form">
-      <div className="form-row">
-        <label htmlFor="task">New item</label>
-        <input type="text" value={newItem} onChange={e => setNewItem(e.target.value)} name="task" id="task" />
-      </div>
-      <button className="btn">Add</button>
-    </form>
+    <NewTodoForm onSubmit={addTodo}/>
     <h1 className="header">Todo List</h1>
     <ul className='list'>
       { todos.length === 0 && "No Todos" }
