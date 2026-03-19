@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { NewTodoForm } from './NewTodoForm.tsx'
 import { TodoList } from './TodoList.tsx'
 import type { Task, TodoInteractions } from './Types.tsx'
@@ -8,7 +8,16 @@ import './style.css'
 
 
 export default function App() {
-  const [todos, setTodos] = useState<Task[]>([])
+  const [todos, setTodos] = useState<Task[]>(() => {
+    // Load local storage
+    const todosJSON = localStorage.getItem("TODOS");
+    return todosJSON !== null ? JSON.parse(todosJSON) : [];
+  }) // Persistance of memory
+
+  // Save if todos change
+  useEffect(() => {
+    localStorage.setItem("TODOS", JSON.stringify(todos))
+  }, [todos])
 
   function addTodo(title : string) {
     const newTask : Task = { 
@@ -40,6 +49,7 @@ export default function App() {
     });
   }
 
+  // Make object to pass functions through without the need to write them everywhere
   const availableInteractions : TodoInteractions = {
     toggle : toggleTodo,
     delete : deleteTodo
