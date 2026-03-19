@@ -32,11 +32,17 @@ export default function App() {
   function toggleTodo(id : string, isCompleted : boolean) {
     setTodos(currentTodos => {
         return currentTodos.map(todo => {
-          if (todo.id == id) {
+          if (todo.id === id) {
             return {...todo, isCompleted};
           }
           return todo;
         })
+    });
+  }
+
+  function deleteTodo(id : string) {
+    setTodos(currentTodos => {
+      return currentTodos.filter(todo => todo.id !== id)
     });
   }
 
@@ -59,7 +65,8 @@ export default function App() {
                       onChange={(e : ChangeEvent<HTMLInputElement>)=> toggleTodo(todo.id, e.target.checked)}/>
               {todo.name}
             </label>
-            <button className="btn btn-danger">Delete</button>
+            <button className="btn btn-danger"
+                    onClick={() => deleteTodo(todo.id)}>Delete</button>
           </li>
         );
       }) }
