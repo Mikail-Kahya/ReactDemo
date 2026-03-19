@@ -1,4 +1,4 @@
-import { useState, type SubmitEventHandler } from 'react'
+import { useState, type ChangeEvent } from 'react'
 import './reset.css'
 import './style.css'
 
@@ -22,11 +22,22 @@ export default function App() {
       createdTime: new Date()
     }
 
-    setTodos((currentTodos => {
+    setTodos(currentTodos => {
         return [...currentTodos, newTask];
-    }));
+    });
 
     setNewItem("");
+  }
+
+  function toggleTodo(id : string, isCompleted : boolean) {
+    setTodos(currentTodos => {
+        return currentTodos.map(todo => {
+          if (todo.id == id) {
+            return {...todo, isCompleted};
+          }
+          return todo;
+        })
+    });
   }
 
   return <>
@@ -44,8 +55,8 @@ export default function App() {
           <li key={todo.id}>
             <label>
               <input  type="checkbox" 
-                      checked={todo.isCompleted} 
-                      onChange={(e : HTMLInputElement)=> toggleTodo(todo.id, e.formTarget.checked)}/>
+                      checked={todo.isCompleted}
+                      onChange={(e : ChangeEvent<HTMLInputElement>)=> toggleTodo(todo.id, e.target.checked)}/>
               {todo.name}
             </label>
             <button className="btn btn-danger">Delete</button>
