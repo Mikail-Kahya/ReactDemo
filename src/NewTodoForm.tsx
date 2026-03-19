@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { SubmitProps, Task } from './Types.tsx'
+import type { SubmitProps } from './Types.tsx'
 
 export function NewTodoForm(props : SubmitProps) { 
     const [newItem, setNewItem] = useState("");

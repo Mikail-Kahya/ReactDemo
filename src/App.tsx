@@ -7,7 +7,6 @@ import './style.css'
 
 
 export default function App() {
-  const [newItem, setNewItem] = useState("");
   const [todos, setTodos] = useState<Task[]>([])
 
   function addTodo(title : string) {
