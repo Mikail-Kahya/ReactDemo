@@ -1,15 +1,8 @@
-import { useState } from 'react'
+//import { useState } from 'react'
 //import heroImg from './assets/hero.png'
-//import './App.css'
+import './reset.css'
+import './style.css'
 
-function App() {
-  const [] = useState(0)
-
-  return (
-    <>
-  
-    </>
-  )
+export default function App() {
+  return "hi";
 }
-
-export default App

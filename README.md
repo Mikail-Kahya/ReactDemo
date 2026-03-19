@@ -9,6 +9,7 @@ Development server: Vite\
 Host provider: Netlify\
 
 ## Time invested
+Setup: 40 minutes 23 seconds
 
 ## Learnings
 
